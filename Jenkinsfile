@@ -1,6 +1,6 @@
-def CONTAINER_NAME="jenkins-pipeline"
-def CONTAINER_TAG="latest"
-def DOCKER_HUB_USER="hakdogan"
+def CONTAINER_NAME="prathyusha1234/httpd"
+def CONTAINER_TAG="v1"
+def DOCKER_HUB_USER="prathyusha"
 def HTTP_PORT="8090"
 
 node {
@@ -19,13 +19,13 @@ node {
         sh "mvn clean install"
     }
 
-    stage('Sonar'){
+    /*stage('Sonar'){
         try {
             sh "mvn sonar:sonar"
         } catch(error){
             echo "The sonar server could not be reached ${error}"
         }
-     }
+     }*/
 
     stage("Image Prune"){
         imagePrune(CONTAINER_NAME)
